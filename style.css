@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    background: #F88379;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    background: #fce4ec;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.calculator form input {
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #616161;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.history-bar {
+    text-align: right;
+    max-height: 100px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #e5737366;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    color: #616161;
+    font-size: 37px;
+    line-height: 1.5;
+    visibility: hidden; /* hidden initially */
+    opacity: 0; /* history fully transparent by initially */
+    transform: translateY(100%); /* history positioned off screen */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* smooth animation */
+    display: flex;
+    flex-direction: column; /* entries are added from top to bottom order */
+}
+
+.history-bar.visible {
+    visibility: visible; /* makes the history bar visible */
+    opacity: 1; /* fully opaque */
+    transform: translateY(0); /* slide up to its position */
+}
+
+.display-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+    visibility: hidden; /* hidden by default */
+}
+
+.display-wrapper.visible {
+    visibility: visible; /* becomes visible after interaction */
+}
+
+.bar {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+form .display {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+form .display input {
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+
+form input.operator {
+    background-color: #e5737366;
+}
+
+form input.equal {
+    background-color: #fd4f4f;
+}
+
+form input.operator {
+    background-color: #e5737366; /* original color for operator buttons */
+    transition: background-color 0.2s ease; /* smooth transition */
+}
+
+form input.equal {
+    background-color: #fd4f4f; /* original color for equal button */
+    transition: background-color 0.2s ease; /* smooth transition */
+}
+
+form input[type="button"] {
+    transition: background-color 0.2s ease; /* smooth transition for all buttons */
+}
+
+form input.clicked {
+    background-color: #cab5bc; /* highlight color on click */
+}
